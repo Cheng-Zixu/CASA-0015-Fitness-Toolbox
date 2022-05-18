@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "65355168723",
+    "firebase_url": "https://fitness-toolbox-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "fitness-toolbox",
+    "storage_bucket": "fitness-toolbox.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65355168723:android:a154667ae12f30f3b9cd26",
+        "android_client_info": {
+          "package_name": "com.example.CalorieCalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65355168723-7vcfkb8tce61fugnai29u11hfekigb7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX97CFKy3o97XxyThrZAxW_M9cF8LV0CM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65355168723-7vcfkb8tce61fugnai29u11hfekigb7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65355168723:android:7b685309d6a4bbd2b9cd26",
+        "android_client_info": {
+          "package_name": "com.sayujsujeev.yoga_training_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65355168723-7vcfkb8tce61fugnai29u11hfekigb7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX97CFKy3o97XxyThrZAxW_M9cF8LV0CM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65355168723-7vcfkb8tce61fugnai29u11hfekigb7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:65355168723:android:8ba04e4944e84a11b9cd26",
+        "android_client_info": {
+          "package_name": "com.zixucheng.fitness_toolbox"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "65355168723-26v9n6od5gk8sbho3oc7ue1gnm1kssr9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zixucheng.fitness_toolbox",
+            "certificate_hash": "419031c820e83109f3771fee0d574131e0dbae6e"
+          }
+        },
+        {
+          "client_id": "65355168723-7vcfkb8tce61fugnai29u11hfekigb7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAX97CFKy3o97XxyThrZAxW_M9cF8LV0CM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "65355168723-7vcfkb8tce61fugnai29u11hfekigb7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
