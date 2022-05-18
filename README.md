@@ -1,4 +1,4 @@
-# Fitness Toolbox
+# Fitness Toolbox(More info to be updated later...)
 
 As people pay more and more attention to their physical health and diets intake, some fitness apps are getting increasingly popular. Fitness Toolbox integrates some useful tools and functions in some fitness apps into one fitness toolbox app. It’s easier for a fitness beginner to use.
 
