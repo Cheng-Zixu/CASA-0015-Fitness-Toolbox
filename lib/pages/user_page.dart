@@ -1,11 +1,9 @@
-import 'dart:ffi';
-
 import 'package:fitness_toolbox/config/Configs.dart';
 import 'package:fitness_toolbox/config/toast_util.dart';
 import 'package:fitness_toolbox/model/user.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
+import 'package:provider/provider.dart';
 
 class UserPage extends StatefulWidget {
   @override
@@ -26,63 +24,20 @@ class _UserPage extends State<UserPage> {
     _heightController.text = '${Provider.of<User>(context, listen: false).height}';
     _weightController.text = '${Provider.of<User>(context, listen: false).weight}';
     _ageController.text = '${Provider.of<User>(context, listen: false).age}';
-
-    _heightController.addListener(() async {
-      String height = _heightController.value.text;
-      double heightDouble = 0;
-      try {
-        heightDouble = double.parse(height);
-      } catch (e) {
-        ToastUtil.showToast(Configs.INPUT_ERR);
-        return;
-      }
-      if (heightDouble > 0) {
-        await Provider.of<User>(context,listen: false).upUserHeight(heightDouble);
-      }
-
-    });
-    _weightController.addListener(() async {
-      String weight = _weightController.value.text;
-      double weightDouble = 0;
-      try {
-        weightDouble = double.parse(weight);
-      } catch (e) {
-        ToastUtil.showToast(Configs.INPUT_ERR);
-        return;
-      }
-      if (weightDouble > 0) {
-        await Provider.of<User>(context,listen: false).upUserWeight(weightDouble);
-      }
-
-    });
-    _ageController.addListener(() async {
-      String age = _ageController.value.text;
-      int ageInt = 0;
-      try {
-        ageInt = int.parse(age);
-      } catch (e) {
-        ToastUtil.showToast(Configs.INPUT_ERR);
-        return;
-      }
-      if (ageInt > 0) {
-        await Provider.of<User>(context,listen: false).upUserAge(ageInt);
-      }
-
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fitHeight,
-            colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.7), BlendMode.dstATop),
-            image: AssetImage('assets/images/user.jpg'),
-          )
-      ),
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fitHeight,
+              colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.7), BlendMode.dstATop),
+              image: AssetImage('assets/images/user.jpg'),
+            )
+        ),
       child: Column(
       children: [
         SizedBox(height: 20,),
@@ -90,7 +45,7 @@ class _UserPage extends State<UserPage> {
           children: [
             SizedBox(width: 40,),
             Container(
-              //load image
+              //加载网络图片
               height: 80.0,
               width: 80.0,
               decoration: BoxDecoration(
@@ -158,7 +113,7 @@ class _UserPage extends State<UserPage> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: TextField(
-                            controller: _heightController,
+                            controller: _heightController..text='${context.watch<User>()?.height??""}',
                             textAlign: TextAlign.left,
                             decoration: InputDecoration(
                               hintText: "${Configs.hh_1}",
@@ -210,7 +165,7 @@ class _UserPage extends State<UserPage> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: TextField(
-                            controller: _weightController,
+                            controller: _weightController..text = '${context.watch<User>()?.weight??""}',
                             textAlign: TextAlign.left,
                             decoration: InputDecoration(
                               hintText: "${Configs.weight_1}",
@@ -262,7 +217,7 @@ class _UserPage extends State<UserPage> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: TextField(
-                            controller: _ageController,
+                            controller: _ageController..text = '${context.watch<User>()?.age??""}',
                             textAlign: TextAlign.left,
                             decoration: InputDecoration(
                               hintText: "${Configs.Aeg_1}",
@@ -287,27 +242,73 @@ class _UserPage extends State<UserPage> {
         SizedBox(height: 40,),
 
         Divider(color: Colors.black, thickness: 1, indent: 20, endIndent: 20,),
-        SizedBox(height: 100,),
+        SizedBox(height: 80,),
+        Container(
+          width: double.infinity,
+          height: 50,
+          child: Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    String height = _heightController.value.text.toString();
+                    String weight = _weightController.value.text.toString();
+                    String age = _ageController.value.text.toString();
+                    double heightDouble, weightDouble;
+                    int ageInt;
+                    try {
+                      heightDouble = double.parse(height);
+                      weightDouble = double.parse(weight);
+                      ageInt = int.parse(age);
+                    } catch (e) {
+                      ToastUtil.showToast(Configs.INPUT_ERR);
+                    }
 
-        InkWell(
-          onTap: _handleSignOut,
-          child: Center(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
-              margin: EdgeInsets.symmetric(horizontal: 100),
-              height: 50,
-              width: double.infinity,
-              child: Center(
-                  child: Text(
-                    Configs.LOGOUT,
-                    style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                  )),
-            ),
+                    bool aa = await Provider.of<User>(context,listen: false).upUser(heightDouble, weightDouble, ageInt);
+                    if (aa) {
+                      ToastUtil.showToast("Save success");
+                    } else {
+                      ToastUtil.showToast("Save failed");
+                    }
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.all(Radius.circular(25))),
+                    margin: EdgeInsets.symmetric(horizontal: 20),
+                    height: 50,
+                    width: double.infinity,
+                    child: Center(
+                        child: Text(
+                          "SAVE",
+                          style:
+                          TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                        )),
+                  ),
+                ),
+              ),
+              Expanded(
+                  child: InkWell(
+                    onTap: _handleSignOut,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.all(Radius.circular(25))),
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      height: 50,
+                      width: double.infinity,
+                      child: Center(
+                          child: Text(
+                            Configs.LOGOUT,
+                            style:
+                            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                          )),
+                    ),
+                  ),
+              ),
+            ],
           ),
-        )
+        ),
       ],
     ));
   }

@@ -69,8 +69,8 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
     notifyListeners();
   }
 
-  void upUserHeight(double height) async{
-    FirebaseFirestore.instance.collection(email).add(
+  Future upUserHeight(double height) async{
+    var value =  await FirebaseFirestore.instance.collection(email).add(
         {
           "displayName": displayName,
           "email": email,
@@ -79,14 +79,10 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
           "weight": weight,
           "age": age,
         }
-    ).then((value) async {
-      var data = await value.get();
-      fromJson(data.data());
-      notifyListeners();
-      print('${value.toString()}');
-    }).catchError((e) {
-      print('${e.toString()}');
-    });
+    );
+    var data = await value.get();
+    fromJson(data.data());
+    notifyListeners();
     // await FirebaseFirestore.instance.collection(email).doc(FirebaseFirestore.instance.collection(email).path).update({
     //    "height": height,
     //
@@ -96,8 +92,8 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
     // });
   }
 
-  void upUserWeight(double weight) async{
-    FirebaseFirestore.instance.collection(email).add(
+  Future upUserWeight(double weight) async{
+    var value = await FirebaseFirestore.instance.collection(email).add(
         {
           "displayName": displayName,
           "email": email,
@@ -106,18 +102,32 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
           "weight": weight,
           "age": age,
         }
-    ).then((value) async {
-      var data = await value.get();
-      fromJson(data.data());
-      notifyListeners();
-      print('${value.toString()}');
-    }).catchError((e) {
-      print('${e.toString()}');
-    });
+    );
+    var data = await value.get();
+    fromJson(data.data());
+    notifyListeners();
   }
 
-  void upUserAge(int age) async{
-    FirebaseFirestore.instance.collection(email).add(
+  Future upUser(double height, double weight, int age) async {
+    try {
+      var snapShot = await FirebaseFirestore.instance.collection(email).get();
+      await snapShot.docs.first.reference.update({
+        "height": height,
+        "weight": weight,
+        "age": age,
+      });
+      _weight = weight;
+      _height = height;
+      _age = age;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future upUserAge(int age) async{
+    var value = await FirebaseFirestore.instance.collection(email).add(
         {
           "displayName": displayName,
           "email": email,
@@ -126,14 +136,10 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
           "weight": weight,
           "age": age,
         }
-    ).then((value) async {
-      var data = await value.get();
-      fromJson(data.data());
-      notifyListeners();
-      print('${value.toString()}');
-    }).catchError((e) {
-      print('${e.toString()}');
-    });
+    );
+    var data = await value.get();
+    fromJson(data.data());
+    notifyListeners();
   }
 
   void initUser(String displayName, String email, String photoUrl) async {
