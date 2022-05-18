@@ -57,7 +57,7 @@ class _HistoryPageState extends State<HistoryPage> {
                   ),),
                   Align(
                     alignment: Alignment.topLeft,
-                    child: Text('${Configs.dd} \n ${context.watch<ExerciseModel>().time}s', style: TextStyle(
+                    child: Text('${Configs.dd} \n ${(context.watch<ExerciseModel>().time/60).toStringAsFixed(2)}min(s)', style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.w500,
                         color: Colors.black
