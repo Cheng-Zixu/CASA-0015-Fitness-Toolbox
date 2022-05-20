@@ -17,7 +17,6 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
   double get weight => _weight;
   int get age => _age;
 
-
   set displayName(String value) {
     _displayName = value;
   }
@@ -32,7 +31,6 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
     properties.add(DoubleProperty('height', height));
     properties.add(DoubleProperty('weight', weight));
     properties.add(IntProperty('age', age));
-
   }
 
   fromJson(Map<String, dynamic> json) {
@@ -69,40 +67,29 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
     notifyListeners();
   }
 
-  Future upUserHeight(double height) async{
-    var value =  await FirebaseFirestore.instance.collection(email).add(
-        {
-          "displayName": displayName,
-          "email": email,
-          "photoUrl": photoUrl,
-          "height": height,
-          "weight": weight,
-          "age": age,
-        }
-    );
+  Future upUserHeight(double height) async {
+    var value = await FirebaseFirestore.instance.collection(email).add({
+      "displayName": displayName,
+      "email": email,
+      "photoUrl": photoUrl,
+      "height": height,
+      "weight": weight,
+      "age": age,
+    });
     var data = await value.get();
     fromJson(data.data());
     notifyListeners();
-    // await FirebaseFirestore.instance.collection(email).doc(FirebaseFirestore.instance.collection(email).path).update({
-    //    "height": height,
-    //
-    // }).then((value) {
-    //   _height = height;
-    //   notifyListeners();
-    // });
   }
 
-  Future upUserWeight(double weight) async{
-    var value = await FirebaseFirestore.instance.collection(email).add(
-        {
-          "displayName": displayName,
-          "email": email,
-          "photoUrl": photoUrl,
-          "height": height,
-          "weight": weight,
-          "age": age,
-        }
-    );
+  Future upUserWeight(double weight) async {
+    var value = await FirebaseFirestore.instance.collection(email).add({
+      "displayName": displayName,
+      "email": email,
+      "photoUrl": photoUrl,
+      "height": height,
+      "weight": weight,
+      "age": age,
+    });
     var data = await value.get();
     fromJson(data.data());
     notifyListeners();
@@ -126,35 +113,32 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
     }
   }
 
-  Future upUserAge(int age) async{
-    var value = await FirebaseFirestore.instance.collection(email).add(
-        {
-          "displayName": displayName,
-          "email": email,
-          "photoUrl": photoUrl,
-          "height": height,
-          "weight": weight,
-          "age": age,
-        }
-    );
+  Future upUserAge(int age) async {
+    var value = await FirebaseFirestore.instance.collection(email).add({
+      "displayName": displayName,
+      "email": email,
+      "photoUrl": photoUrl,
+      "height": height,
+      "weight": weight,
+      "age": age,
+    });
     var data = await value.get();
     fromJson(data.data());
     notifyListeners();
   }
 
   void initUser(String displayName, String email, String photoUrl) async {
-    var querySnapshot = await FirebaseFirestore.instance.collection(email).get();
+    var querySnapshot =
+        await FirebaseFirestore.instance.collection(email).get();
     if (querySnapshot != null && querySnapshot.docs.isNotEmpty) {
-     fromJson(querySnapshot.docs.last.data());
-     notifyListeners();
+      fromJson(querySnapshot.docs.last.data());
+      notifyListeners();
     } else {
-      FirebaseFirestore.instance.collection(email).add(
-          {
-            "displayName": displayName,
-            "email": email,
-            "photoUrl": photoUrl,
-          }
-      ).then((value) async {
+      FirebaseFirestore.instance.collection(email).add({
+        "displayName": displayName,
+        "email": email,
+        "photoUrl": photoUrl,
+      }).then((value) async {
         var data = await value.get();
         fromJson(data.data());
         notifyListeners();
@@ -165,23 +149,4 @@ class User with ChangeNotifier, DiagnosticableTreeMixin {
     }
     // notifyListeners();
   }
-
-
-// User({this.displayName, this.email, this.height, this.weight, this.age});
-
-  // User.fromJson(Map<String, dynamic> json) {
-  //   displayName = json['displayName'];
-  //   email = json['email'];
-  //   height = json['height'] ?? 0;
-  //   weight = json['weight'] ?? 0;
-  //   age = json['age'] ?? 0;
-  // }
-
-  // Map<String, dynamic> toJson() => {
-  //       'displayName': displayName,
-  //       'email': email,
-  //       'height': height,
-  //       'weight': weight,
-  //       'age': age,
-  //     };
 }

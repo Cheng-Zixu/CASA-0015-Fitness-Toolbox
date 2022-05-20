@@ -3,13 +3,11 @@ import 'package:fitness_toolbox/pages/exercise_page.dart';
 import 'package:fitness_toolbox/pages/history_page.dart';
 import 'package:fitness_toolbox/pages/user_page.dart';
 import 'package:flutter/material.dart';
-
-import '../config/Configs.dart';
+import 'package:fitness_toolbox/config/Configs.dart';
 
 class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _HomePage();
-
 }
 
 class _HomePage extends State<HomePage> {
@@ -18,28 +16,51 @@ class _HomePage extends State<HomePage> {
   final List<BottomNavigationBarItem> bottomNavItems = [
     BottomNavigationBarItem(
       backgroundColor: Colors.black,
-      icon: SizedBox(child: Image.asset("assets/images/ic_exercise.png",),width: 24, height: 24,),
+      icon: SizedBox(
+        child: Image.asset(
+          "assets/images/ic_exercise.png",
+        ),
+        width: 24,
+        height: 24,
+      ),
       label: Configs.Exercise,
     ),
     BottomNavigationBarItem(
       backgroundColor: Colors.black,
-      icon: SizedBox(child: Image.asset("assets/images/ic_calories.png",),width: 24, height: 24,),
+      icon: SizedBox(
+        child: Image.asset(
+          "assets/images/ic_calories.png",
+        ),
+        width: 24,
+        height: 24,
+      ),
       label: Configs.Calories,
     ),
     BottomNavigationBarItem(
       backgroundColor: Colors.black,
-      icon: SizedBox(child: Image.asset("assets/images/ic_history.png",),width: 24, height: 24,),
+      icon: SizedBox(
+        child: Image.asset(
+          "assets/images/ic_history.png",
+        ),
+        width: 24,
+        height: 24,
+      ),
       label: Configs.History,
     ),
     BottomNavigationBarItem(
       backgroundColor: Colors.black,
-      icon: SizedBox(child: Image.asset("assets/images/ic_user.png",),width: 24, height: 24,),
+      icon: SizedBox(
+        child: Image.asset(
+          "assets/images/ic_user.png",
+        ),
+        width: 24,
+        height: 24,
+      ),
       label: Configs.My,
     ),
   ];
 
   int currentIndex;
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +78,6 @@ class _HomePage extends State<HomePage> {
         },
       ),
       body: pages[currentIndex],
-
     );
   }
 
@@ -75,5 +95,4 @@ class _HomePage extends State<HomePage> {
       });
     }
   }
-
 }

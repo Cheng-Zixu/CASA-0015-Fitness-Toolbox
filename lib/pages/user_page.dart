@@ -8,8 +8,8 @@ import 'package:provider/provider.dart';
 class UserPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _UserPage();
-
 }
+
 class _UserPage extends State<UserPage> {
   Future<void> _initialization;
   TextEditingController _heightController = TextEditingController();
@@ -21,8 +21,10 @@ class _UserPage extends State<UserPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _heightController.text = '${Provider.of<User>(context, listen: false).height}';
-    _weightController.text = '${Provider.of<User>(context, listen: false).weight}';
+    _heightController.text =
+        '${Provider.of<User>(context, listen: false).height}';
+    _weightController.text =
+        '${Provider.of<User>(context, listen: false).weight}';
     _ageController.text = '${Provider.of<User>(context, listen: false).age}';
   }
 
@@ -33,69 +35,88 @@ class _UserPage extends State<UserPage> {
         height: double.infinity,
         decoration: BoxDecoration(
             image: DecorationImage(
-              fit: BoxFit.fitHeight,
-              colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.7), BlendMode.dstATop),
-              image: AssetImage('assets/images/user.jpg'),
-            )
-        ),
-      child: Column(
-      children: [
-        SizedBox(height: 20,),
-        Row(
+          fit: BoxFit.fitHeight,
+          colorFilter: ColorFilter.mode(
+              Colors.white.withOpacity(0.7), BlendMode.dstATop),
+          image: AssetImage('assets/images/user.jpg'),
+        )),
+        child: Column(
           children: [
-            SizedBox(width: 40,),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 40,
+                ),
+                Container(
+                  //load image
+                  height: 80.0,
+                  width: 80.0,
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40),
+                      ),
+                      image: DecorationImage(
+                        image:
+                            NetworkImage("${context.watch<User>().photoUrl}"),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  '${context.watch<User>().displayName}',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 2,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "${Configs.info}",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                ),
+              ),
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Container(
-              //加载网络图片
-              height: 80.0,
-              width: 80.0,
-              decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40),
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                  image: DecorationImage(
-                    image: NetworkImage("${context.watch<User>().photoUrl}"),
-                    fit:BoxFit.cover,
-                  )
-              ),
-            ),
-            SizedBox(width: 10,),
-            Text('${context.watch<User>().displayName}', style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-              color: Colors.black
-            ),),
-          ],
-        ),
-        SizedBox(height: 20,),
-        Divider(color: Colors.black, thickness: 2,),
-        Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "${Configs.info}",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400
-              ),
-            ),
-          ),
-        ),
-        Divider(color: Colors.black, thickness: 1, indent: 20, endIndent: 20,),
-        SizedBox(height: 20,),
-        Container(
-          width: double.infinity,
-          height: 40,
-          child: Row(
-            children: [
-              SizedBox(width: 20,),
-              Text(Configs.height, style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400
-              ),),
-              Expanded(
-                  child: Container(
+                  Text(
+                    Configs.height,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                  Expanded(
+                      child: Container(
                     width: double.infinity,
                     height: 39,
                     alignment: Alignment.centerLeft,
@@ -113,7 +134,8 @@ class _UserPage extends State<UserPage> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: TextField(
-                            controller: _heightController..text='${context.watch<User>()?.height??""}',
+                            controller: _heightController
+                              ..text = '${context.watch<User>()?.height ?? ""}',
                             textAlign: TextAlign.left,
                             decoration: InputDecoration(
                               hintText: "${Configs.hh_1}",
@@ -125,29 +147,30 @@ class _UserPage extends State<UserPage> {
                                 letterSpacing: 0.52,
                               ),
                               border: InputBorder.none,
-                            )
-                        ),
+                            )),
                       ),
                     ),
-                  )
+                  )),
+                ],
               ),
-
-            ],
-          ),
-        ),
-        SizedBox(height: 20,),
-        Container(
-          width: double.infinity,
-          height: 40,
-          child: Row(
-            children: [
-              SizedBox(width: 20,),
-              Text(Configs.weight, style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400
-              ),),
-              Expanded(
-                  child: Container(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    Configs.weight,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                  Expanded(
+                      child: Container(
                     width: double.infinity,
                     height: 39,
                     alignment: Alignment.centerLeft,
@@ -165,7 +188,8 @@ class _UserPage extends State<UserPage> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: TextField(
-                            controller: _weightController..text = '${context.watch<User>()?.weight??""}',
+                            controller: _weightController
+                              ..text = '${context.watch<User>()?.weight ?? ""}',
                             textAlign: TextAlign.left,
                             decoration: InputDecoration(
                               hintText: "${Configs.weight_1}",
@@ -177,29 +201,30 @@ class _UserPage extends State<UserPage> {
                                 letterSpacing: 0.52,
                               ),
                               border: InputBorder.none,
-                            )
-                        ),
+                            )),
                       ),
                     ),
-                  )
+                  )),
+                ],
               ),
-
-            ],
-          ),
-        ),
-        SizedBox(height: 20,),
-        Container(
-          width: double.infinity,
-          height: 40,
-          child: Row(
-            children: [
-              SizedBox(width: 20,),
-              Text(Configs.Aeg, style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400
-              ),),
-              Expanded(
-                  child: Container(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    Configs.Aeg,
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                  ),
+                  Expanded(
+                      child: Container(
                     width: double.infinity,
                     height: 39,
                     alignment: Alignment.centerLeft,
@@ -217,7 +242,8 @@ class _UserPage extends State<UserPage> {
                       child: Padding(
                         padding: EdgeInsets.only(bottom: 6),
                         child: TextField(
-                            controller: _ageController..text = '${context.watch<User>()?.age??""}',
+                            controller: _ageController
+                              ..text = '${context.watch<User>()?.age ?? ""}',
                             textAlign: TextAlign.left,
                             decoration: InputDecoration(
                               hintText: "${Configs.Aeg_1}",
@@ -229,90 +255,98 @@ class _UserPage extends State<UserPage> {
                                 letterSpacing: 0.52,
                               ),
                               border: InputBorder.none,
-                            )
-                        ),
+                            )),
                       ),
                     ),
-                  )
+                  )),
+                ],
               ),
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 1,
+              indent: 20,
+              endIndent: 20,
+            ),
+            SizedBox(
+              height: 80,
+            ),
+            Container(
+              width: double.infinity,
+              height: 50,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: InkWell(
+                      onTap: () async {
+                        String height = _heightController.value.text.toString();
+                        String weight = _weightController.value.text.toString();
+                        String age = _ageController.value.text.toString();
+                        double heightDouble, weightDouble;
+                        int ageInt;
+                        try {
+                          heightDouble = double.parse(height);
+                          weightDouble = double.parse(weight);
+                          ageInt = int.parse(age);
+                        } catch (e) {
+                          ToastUtil.showToast(Configs.INPUT_ERR);
+                        }
 
-            ],
-          ),
-        ),
-        SizedBox(height: 40,),
-
-        Divider(color: Colors.black, thickness: 1, indent: 20, endIndent: 20,),
-        SizedBox(height: 80,),
-        Container(
-          width: double.infinity,
-          height: 50,
-          child: Row(
-            children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () async {
-                    String height = _heightController.value.text.toString();
-                    String weight = _weightController.value.text.toString();
-                    String age = _ageController.value.text.toString();
-                    double heightDouble, weightDouble;
-                    int ageInt;
-                    try {
-                      heightDouble = double.parse(height);
-                      weightDouble = double.parse(weight);
-                      ageInt = int.parse(age);
-                    } catch (e) {
-                      ToastUtil.showToast(Configs.INPUT_ERR);
-                    }
-
-                    bool aa = await Provider.of<User>(context,listen: false).upUser(heightDouble, weightDouble, ageInt);
-                    if (aa) {
-                      ToastUtil.showToast("Save success");
-                    } else {
-                      ToastUtil.showToast("Save failed");
-                    }
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.all(Radius.circular(25))),
-                    margin: EdgeInsets.symmetric(horizontal: 20),
-                    height: 50,
-                    width: double.infinity,
-                    child: Center(
-                        child: Text(
+                        bool aa =
+                            await Provider.of<User>(context, listen: false)
+                                .upUser(heightDouble, weightDouble, ageInt);
+                        if (aa) {
+                          ToastUtil.showToast("Save success");
+                        } else {
+                          ToastUtil.showToast("Save failed");
+                        }
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(25))),
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        height: 50,
+                        width: double.infinity,
+                        child: Center(
+                            child: Text(
                           "SAVE",
-                          style:
-                          TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
                         )),
-                  ),
-                ),
-              ),
-              Expanded(
-                  child: InkWell(
-                    onTap: _handleSignOut,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.all(Radius.circular(25))),
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      height: 50,
-                      width: double.infinity,
-                      child: Center(
-                          child: Text(
-                            Configs.LOGOUT,
-                            style:
-                            TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-                          )),
+                      ),
                     ),
                   ),
+                  Expanded(
+                    child: InkWell(
+                      onTap: _handleSignOut,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(25))),
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        height: 50,
+                        width: double.infinity,
+                        child: Center(
+                            child: Text(
+                          Configs.LOGOUT,
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        )),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      ],
-    ));
+            ),
+          ],
+        ));
   }
-
 
   Future<void> _ensureInitialized() {
     return _initialization ??= GoogleSignInPlatform.instance.init(
@@ -321,8 +355,8 @@ class _UserPage extends State<UserPage> {
         // 'https://www.googleapis.com/auth/contacts.readonly',
       ],
     )..catchError((dynamic _) {
-      _initialization = null;
-    });
+        _initialization = null;
+      });
   }
 
   Future<void> _handleSignOut() async {
@@ -330,5 +364,4 @@ class _UserPage extends State<UserPage> {
     await GoogleSignInPlatform.instance.disconnect();
     Navigator.of(context).pushReplacementNamed("login_in");
   }
-
 }

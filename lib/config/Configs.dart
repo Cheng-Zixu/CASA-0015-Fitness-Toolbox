@@ -1,4 +1,3 @@
-
 class Configs {
   static String Exercise = "Exercise";
   static String Calories = "Calories";
@@ -17,8 +16,6 @@ class Configs {
   static String LOGOUT = "LOGOUT";
   static String BACK = "Back";
   static String INPUT_ERR = "Illegal Input";
-
-
 
   static String b = "Today you've exercised for";
   static String d = "Training";
@@ -49,20 +46,5 @@ class Configs {
   static String hhh_1 = "Weights and calories should be over 0";
   static String hhh_2 = "Add Record Successfully";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  static String aa = "新记录：";
-
+  static String aa = "New Records:";
 }

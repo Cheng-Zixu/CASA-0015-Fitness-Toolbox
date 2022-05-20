@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 
 class Exercise {
-
   String _email;
   String _date;
   int _seconds;
@@ -10,7 +9,6 @@ class Exercise {
   int _weight;
   int _calories;
   int _type;
-
 
   String get email => _email;
 
@@ -30,20 +28,17 @@ class Exercise {
     _name = value;
   }
 
-
   int get seconds => _seconds;
 
   set seconds(int value) {
     _seconds = value;
   }
 
-
   int get weight => _weight;
 
   set weight(int value) {
     _weight = value;
   }
-
 
   int get type => _type;
 
@@ -89,7 +84,6 @@ class Exercise {
     _weight = json['weight'] ?? 0;
     _calories = json['calories'] ?? 0;
     _type = json['type'] ?? 0;
-
   }
 }
 
@@ -100,14 +94,15 @@ class ExerciseModel with ChangeNotifier, DiagnosticableTreeMixin {
 
   fetch(String email) async {
     data.clear();
-    var querySnapshot = await FirebaseFirestore.instance.collection('${email}_exercise').get();
+    var querySnapshot =
+        await FirebaseFirestore.instance.collection('${email}_exercise').get();
     if (querySnapshot != null && querySnapshot.docs.isNotEmpty) {
-      for(int i = 0; i < querySnapshot.docs.length; i++) {
+      for (int i = 0; i < querySnapshot.docs.length; i++) {
         Exercise item = Exercise.fromJson(querySnapshot.docs[i].data());
-        if ((item?.type??1) == 1) {
-          time = time + (item?.seconds??0);
+        if ((item?.type ?? 1) == 1) {
+          time = time + (item?.seconds ?? 0);
         } else {
-          kcal = kcal + (item?.calories??0);
+          kcal = kcal + (item?.calories ?? 0);
         }
         data.add(item);
       }
@@ -116,40 +111,41 @@ class ExerciseModel with ChangeNotifier, DiagnosticableTreeMixin {
   }
 
   addExercise(String email, _date, _name, int _seconds) async {
-    var value = await FirebaseFirestore.instance.collection('${email}_exercise').add(
-        {
-          "email": email,
-          "date": _date,
-          "name": _name,
-          "seconds": _seconds,
-          "type": 1,
-        }
-    );
+    var value =
+        await FirebaseFirestore.instance.collection('${email}_exercise').add({
+      "email": email,
+      "date": _date,
+      "name": _name,
+      "seconds": _seconds,
+      "type": 1,
+    });
     var myData = await value.get();
     data.add(Exercise.fromJson(myData.data()));
     await fetch(email);
     notifyListeners();
   }
 
-  addExerciseCalories(String email, _date, _name,  int _weight, int _calories) async {
-    var value = await FirebaseFirestore.instance.collection('${email}_exercise').add(
-        {
-          "email": email,
-          "date": _date,
-          "name": _name,
-          "weight": _weight,
-          "calories" : _calories,
-          "type": 2,
-        }
-    );
+  addExerciseCalories(
+      String email, _date, _name, int _weight, int _calories) async {
+    var value =
+        await FirebaseFirestore.instance.collection('${email}_exercise').add({
+      "email": email,
+      "date": _date,
+      "name": _name,
+      "weight": _weight,
+      "calories": _calories,
+      "type": 2,
+    });
     var myData = await value.get();
     data.add(Exercise.fromJson(myData.data()));
     await fetch(email);
     notifyListeners();
   }
 
-  removeExercise(Exercise exercise) async{
-    var querySnapshot = await FirebaseFirestore.instance.collection('${exercise.email}_exercise').get();
+  removeExercise(Exercise exercise) async {
+    var querySnapshot = await FirebaseFirestore.instance
+        .collection('${exercise.email}_exercise')
+        .get();
     String path = "";
     for (int i = 0; i < querySnapshot.docs.length; i++) {
       Exercise item = Exercise.fromJson(querySnapshot.docs[i].data());
@@ -159,10 +155,12 @@ class ExerciseModel with ChangeNotifier, DiagnosticableTreeMixin {
       }
     }
     if (path != "") {
-      await FirebaseFirestore.instance.collection('${exercise.email}_exercise').doc(path).delete();
+      await FirebaseFirestore.instance
+          .collection('${exercise.email}_exercise')
+          .doc(path)
+          .delete();
       fetch(exercise.email);
       notifyListeners();
     }
   }
-
 }

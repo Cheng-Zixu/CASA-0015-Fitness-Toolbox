@@ -2,8 +2,8 @@ import 'package:fitness_toolbox/config/toast_util.dart';
 import 'package:fitness_toolbox/model/exercise.dart';
 import 'package:flutter/material.dart';
 
-import '../config/Configs.dart';
-import '../model/user.dart';
+import 'package:fitness_toolbox/config/Configs.dart';
+import 'package:fitness_toolbox/model/user.dart';
 import 'package:provider/provider.dart';
 
 class CaloriesPage extends StatefulWidget {
@@ -19,69 +19,86 @@ class _CaloriesPageState extends State<CaloriesPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fitHeight,
-            colorFilter: ColorFilter.mode(Colors.white.withOpacity(0.7), BlendMode.dstATop),
-            image: AssetImage('assets/images/calorie.jpg'),
-          )
-      ),
-      child:Column(
-        children: [
-        SizedBox(height: 20,),
-        Row(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: BoxDecoration(
+            image: DecorationImage(
+          fit: BoxFit.fitHeight,
+          colorFilter: ColorFilter.mode(
+              Colors.white.withOpacity(0.7), BlendMode.dstATop),
+          image: AssetImage('assets/images/calorie.jpg'),
+        )),
+        child: Column(
           children: [
-            SizedBox(width: 40,),
+            SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: 40,
+                ),
+                Container(
+                  //loading image...
+                  height: 80.0,
+                  width: 80.0,
+                  decoration: BoxDecoration(
+                      color: Colors.yellow,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(40),
+                      ),
+                      image: DecorationImage(
+                        image:
+                            NetworkImage("${context.watch<User>().photoUrl}"),
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  '${Configs.a} \n ${context.watch<ExerciseModel>().kcal}kcal',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              color: Colors.black,
+              thickness: 2,
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  "${Configs.ff}",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
             Container(
-              //loading image...
-              height: 80.0,
-              width: 80.0,
-              decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(40),
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
-                  image: DecorationImage(
-                    image: NetworkImage("${context.watch<User>().photoUrl}"),
-                    fit:BoxFit.cover,
-                  )
-              ),
-            ),
-            SizedBox(width: 10,),
-            Text('${Configs.a} \n ${context.watch<ExerciseModel>().kcal}kcal', style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w500,
-                color: Colors.black
-            ),),
-          ],
-        ),
-        SizedBox(height: 20,),
-        Divider(color: Colors.black, thickness: 2,),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "${Configs.ff}",
-              style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400
-              ),
-            ),
-          ),
-        ),
-        SizedBox(height: 20,),
-        Container(
-          width: double.infinity,
-          height: 40,
-          child: Row(
-            children: [
-              SizedBox(width: 20,),
-              Text('${Configs.gg}', style: TextStyle(color: Colors.black, fontSize: 16),),
-              Expanded(
-                  child: Container(
+                  Text(
+                    '${Configs.gg}',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  Expanded(
+                      child: Container(
                     width: double.infinity,
                     height: 39,
                     alignment: Alignment.centerLeft,
@@ -111,25 +128,30 @@ class _CaloriesPageState extends State<CaloriesPage> {
                                 letterSpacing: 0.52,
                               ),
                               border: InputBorder.none,
-                            )
-                        ),
+                            )),
                       ),
                     ),
-                  )
+                  )),
+                ],
               ),
-            ],
-          ),
-        ),
-        SizedBox(height: 20,),
-        Container(
-          width: double.infinity,
-          height: 40,
-          child: Row(
-            children: [
-              SizedBox(width: 20,),
-              Text('${Configs.hh}', style: TextStyle(color: Colors.black, fontSize: 16),),
-              Expanded(
-                  child: Container(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    '${Configs.hh}',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  Expanded(
+                      child: Container(
                     width: double.infinity,
                     height: 39,
                     alignment: Alignment.centerLeft,
@@ -159,25 +181,30 @@ class _CaloriesPageState extends State<CaloriesPage> {
                                 letterSpacing: 0.52,
                               ),
                               border: InputBorder.none,
-                            )
-                        ),
+                            )),
                       ),
                     ),
-                  )
+                  )),
+                ],
               ),
-            ],
-          ),
-        ),
-        SizedBox(height: 20,),
-        Container(
-          width: double.infinity,
-          height: 40,
-          child: Row(
-            children: [
-              SizedBox(width: 20,),
-              Text('${Configs.ii}', style: TextStyle(color: Colors.black, fontSize: 16),),
-              Expanded(
-                  child: Container(
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    '${Configs.ii}',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
+                  ),
+                  Expanded(
+                      child: Container(
                     width: double.infinity,
                     height: 39,
                     alignment: Alignment.centerLeft,
@@ -207,66 +234,67 @@ class _CaloriesPageState extends State<CaloriesPage> {
                                 letterSpacing: 0.52,
                               ),
                               border: InputBorder.none,
-                            )
-                        ),
+                            )),
                       ),
                     ),
-                  )
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: 100,),
-        InkWell(
-          onTap: () async {
-            String name = _nameController.value.text;
-            String weight = _weightController.value.text;
-            String goalCalories = _goalCaloriesController.value.text;
-            int weightInt = 0, goalCaloriesInt = 0;
-            if (name == "") {
-              ToastUtil.showToast(Configs.hhh);
-              return;
-            }
-            try {
-
-              if (weight != "") weightInt = int.parse(weight);
-              if (goalCalories != "") goalCaloriesInt = int.parse(goalCalories);
-
-            } catch (e) {
-              ToastUtil.showToast(Configs.hhh_1);
-              return;
-            }
-            await Provider.of<ExerciseModel>(context,listen: false).addExerciseCalories(Provider.of<User>(context, listen: false).email, DateTime.now().toString(), name, weightInt, goalCaloriesInt);
-            _nameController.text = "";
-            _weightController.text = "";
-            _goalCaloriesController.text = "";
-            // await context.read()<ExerciseModel>().addExerciseCalories(context.watch<User>().email, DateTime.now().toString(), name, weightInt, goalCaloriesInt);
-            ToastUtil.showToast(Configs.hhh_2);
-
-
-          },
-          child: Center(
-            child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.black,
-                  borderRadius: BorderRadius.all(Radius.circular(25))),
-              margin: EdgeInsets.symmetric(horizontal: 100),
-              height: 50,
-              width: double.infinity,
-              child: Center(
-                  child: Text(
-                    Configs.jj,
-                    style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   )),
+                ],
+              ),
             ),
-          ),
-        )
+            SizedBox(
+              height: 100,
+            ),
+            InkWell(
+              onTap: () async {
+                String name = _nameController.value.text;
+                String weight = _weightController.value.text;
+                String goalCalories = _goalCaloriesController.value.text;
+                int weightInt = 0, goalCaloriesInt = 0;
+                if (name == "") {
+                  ToastUtil.showToast(Configs.hhh);
+                  return;
+                }
+                try {
+                  if (weight != "") weightInt = int.parse(weight);
+                  if (goalCalories != "")
+                    goalCaloriesInt = int.parse(goalCalories);
+                } catch (e) {
+                  ToastUtil.showToast(Configs.hhh_1);
+                  return;
+                }
+                await Provider.of<ExerciseModel>(context, listen: false)
+                    .addExerciseCalories(
+                        Provider.of<User>(context, listen: false).email,
+                        DateTime.now().toString(),
+                        name,
+                        weightInt,
+                        goalCaloriesInt);
+                _nameController.text = "";
+                _weightController.text = "";
+                _goalCaloriesController.text = "";
+                // await context.read()<ExerciseModel>().addExerciseCalories(context.watch<User>().email, DateTime.now().toString(), name, weightInt, goalCaloriesInt);
+                ToastUtil.showToast(Configs.hhh_2);
+              },
+              child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(Radius.circular(25))),
+                  margin: EdgeInsets.symmetric(horizontal: 100),
+                  height: 50,
+                  width: double.infinity,
+                  child: Center(
+                      child: Text(
+                    Configs.jj,
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  )),
+                ),
+              ),
+            )
 
-
-
-        // Text("${Configs.b}", )
-      ],
-    ));
+            // Text("${Configs.b}", )
+          ],
+        ));
   }
 }
