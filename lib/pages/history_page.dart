@@ -53,7 +53,7 @@ class _HistoryPageState extends State<HistoryPage> {
                 Column(
                   children: [
                     Text(
-                      '${Configs.cc} \n ${context.watch<ExerciseModel>().kcal}kcal',
+                      '${Configs.cc} \n ${context.watch<ExerciseModel>().kcal}   kcal',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -62,7 +62,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     Align(
                       alignment: Alignment.topLeft,
                       child: Text(
-                        '${Configs.dd} \n ${(context.watch<ExerciseModel>().time / 60).toStringAsFixed(2)}min(s)',
+                        '${Configs.dd} \n ${(context.watch<ExerciseModel>().time / 60).toStringAsFixed(2)} min(s)',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
@@ -97,7 +97,7 @@ class _HistoryPageState extends State<HistoryPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                  '${itemDate.date},   ${itemDate.type == 1 ? itemDate.seconds : itemDate.calories}${itemDate.type == 1 ? "s" : 'kcal'}'),
+                                  '${itemDate.date},   ${itemDate.type == 1 ? (itemDate.seconds / 60).toStringAsFixed(2) : itemDate.calories}${itemDate.type == 1 ? " min(s)" : '  kcal'}'),
                               Divider(
                                 thickness: 1,
                                 indent: 10,

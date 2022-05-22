@@ -118,7 +118,7 @@ class _ExercisePageState extends State<ExercisePage> {
                   width: 10,
                 ),
                 Text(
-                  '${Configs.b} \n ${(context.watch<ExerciseModel>().time / 60).toStringAsFixed(2)}min(s)',
+                  '${Configs.b} \n ${(context.watch<ExerciseModel>().time / 60).toStringAsFixed(2)} min(s)',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,

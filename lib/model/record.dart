@@ -16,7 +16,7 @@ class Exercise {
     _email = value;
   }
 
-  String get date => _date;
+  String get date => _date.substring(0, 19);
 
   set date(String value) {
     _date = value;
@@ -91,6 +91,7 @@ class ExerciseModel with ChangeNotifier, DiagnosticableTreeMixin {
   List<Exercise> data = [];
   int kcal = 0;
   int time = 0;
+  String today = DateTime.now().toString().substring(0, 10);
 
   fetch(String email) async {
     time = 0;
@@ -101,15 +102,17 @@ class ExerciseModel with ChangeNotifier, DiagnosticableTreeMixin {
     if (querySnapshot != null && querySnapshot.docs.isNotEmpty) {
       for (int i = 0; i < querySnapshot.docs.length; i++) {
         Exercise item = Exercise.fromJson(querySnapshot.docs[i].data());
+        data.add(item);
+        if (item._date.substring(0, 10) != today) continue;
         if ((item?.type ?? 1) == 1) {
           time = time + (item?.seconds ?? 0);
         } else {
           kcal = kcal + (item?.calories ?? 0);
         }
-        data.add(item);
       }
       notifyListeners();
     }
+    data.sort((a, b) => b._date.compareTo(a._date));
   }
 
   addExercise(String email, _date, _name, int _seconds) async {

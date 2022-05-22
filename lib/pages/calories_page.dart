@@ -57,7 +57,7 @@ class _CaloriesPageState extends State<CaloriesPage> {
                   width: 10,
                 ),
                 Text(
-                  '${Configs.a} \n ${context.watch<ExerciseModel>().kcal}kcal',
+                  '${Configs.a} \n ${context.watch<ExerciseModel>().kcal} kcal',
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w500,
