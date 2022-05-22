@@ -1,5 +1,5 @@
 import 'package:fitness_toolbox/model/user.dart';
-import 'package:fitness_toolbox/model/exercise.dart';
+import 'package:fitness_toolbox/model/record.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in_platform_interface/google_sign_in_platform_interface.dart';
 import 'package:provider/provider.dart';

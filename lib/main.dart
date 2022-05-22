@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_toolbox/model/user.dart';
-import 'package:fitness_toolbox/model/exercise.dart';
+import 'package:fitness_toolbox/model/record.dart';
 import 'package:fitness_toolbox/pages/home_page.dart';
 import 'package:fitness_toolbox/pages/splash_page.dart';
 import 'package:fitness_toolbox/pages/login_page.dart';

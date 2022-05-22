@@ -1,5 +1,5 @@
 import 'package:fitness_toolbox/config/toast_util.dart';
-import 'package:fitness_toolbox/model/exercise.dart';
+import 'package:fitness_toolbox/model/record.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fitness_toolbox/config/Configs.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:fitness_toolbox/config/Configs.dart';
-import 'package:fitness_toolbox/model/exercise.dart';
+import 'package:fitness_toolbox/model/record.dart';
 import 'package:fitness_toolbox/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -97,7 +97,7 @@ class _ItemPage extends State<ItemPage> {
                 ),
               ),
               SizedBox(
-                height: 100,
+                height: 50,
               ),
               InkWell(
                 onTap: () {
