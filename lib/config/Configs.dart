@@ -42,6 +42,7 @@ class Configs {
   static String ii = "Calories: ";
   static String ii_1 = "kcal";
   static String jj = "Add Record";
+  static String jj_1 = "Delete Record Successfully!";
   static String hhh = "Item cannot be null!";
   static String hhh_1 = "Weights and calories should be over 0";
   static String hhh_2 = "Add Record Successfully";

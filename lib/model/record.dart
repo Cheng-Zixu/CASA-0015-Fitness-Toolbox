@@ -154,17 +154,19 @@ class ExerciseModel with ChangeNotifier, DiagnosticableTreeMixin {
     String path = "";
     for (int i = 0; i < querySnapshot.docs.length; i++) {
       Exercise item = Exercise.fromJson(querySnapshot.docs[i].data());
-      if (item.date == exercise.date) {
+      if (item.date == exercise.date.substring(0,19)) {
         path = querySnapshot.docs[i].reference.path;
         break;
       }
     }
     if (path != "") {
+      // print('path: ${path}');
+      path = path.split('/')[1];
       await FirebaseFirestore.instance
           .collection('${exercise.email}_exercise')
           .doc(path)
           .delete();
-      fetch(exercise.email);
+      await fetch(exercise.email);
       notifyListeners();
     }
   }

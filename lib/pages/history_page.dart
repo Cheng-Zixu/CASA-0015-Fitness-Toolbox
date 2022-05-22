@@ -1,6 +1,7 @@
 import 'package:fitness_toolbox/config/Configs.dart';
 import 'package:fitness_toolbox/model/record.dart';
 import 'package:fitness_toolbox/model/user.dart';
+import 'package:fitness_toolbox/config/toast_util.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -88,7 +89,8 @@ class _HistoryPageState extends State<HistoryPage> {
                       Exercise itemDate =
                           context.watch<ExerciseModel>().data[index];
                       return Dismissible(
-                        key: Key("'key${index}'"),
+                        key: UniqueKey(),
+                        //key: Key("'key${index}'"),
                         child: Container(
                           alignment: Alignment.center,
                           width: double.infinity,
@@ -110,6 +112,7 @@ class _HistoryPageState extends State<HistoryPage> {
                           await Provider.of<ExerciseModel>(context,
                                   listen: false)
                               .removeExercise(itemDate);
+                          ToastUtil.showToast(Configs.jj_1);
                         },
                       );
                     })),
