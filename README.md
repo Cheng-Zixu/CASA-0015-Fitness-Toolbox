@@ -12,7 +12,7 @@ This app is convenient for those fitness beginner who who don’t want to go to 
 
 ## Features
 
-##### Splash page & Login page:
+### Splash page & Login page:
 
 * The splash page will show for 3s after starting the app.
 * In the login page, I chose [google sign in platform interface](https://pub.dev/packages/google_sign_in_platform_interface) for user login and authentication.
@@ -20,7 +20,7 @@ This app is convenient for those fitness beginner who who don’t want to go to 
 
 <img src=".\assets\images\splash&login_page.png" style="zoom:20%;" />
 
-##### Exercise Page:
+### Exercise Page:
 
 * A general information about your exercise duration is shown on the top of the page.
 * You can see various tutorial video lists by tapping different columns, including workout training, yoga and meditation.
@@ -29,39 +29,39 @@ This app is convenient for those fitness beginner who who don’t want to go to 
 
 <img src=".\assets\images\exercise_page.jpg" style="zoom:20%;" />
 
-##### Tutorial Page
+### Tutorial Page:
 
 * This page is used to play the tutorial video and record your exercise history.
 * The tutorial video you chose would be shown on the top.
 * A timer gradually increases to record the time you spent on training.
 * When you click back, the training data will be record and save in your history page and store in [firebase cloud store](https://pub.dev/packages/cloud_firestore).
 
-<img src=".\assets\images\tutorial_page.png" width="300px" />
+<img src=".\assets\images\tutorial_page.png" width="275px" />
 
-##### Calorie Page
+### Calorie Page:
 
 * This page contains a simple calorie calculator which could help you record your daily calorie intake.
 * A general information about your daily calorie intake is shown on the top of the page.
 * You need to manually input the item, weights and calories about the food you ate today.
 * After you press the ‘add record’ button, your daily calorie intake will be saved on firebase and shown in history page.
 
-<img src=".\assets\images\calorie_page.png" style="zoom:20%;" />
+<img src=".\assets\images\calorie_page.png" width="275px" />
 
-##### History Page
+### History Page:
 
 * This page shows all your history records about daily calorie intake and exercise duration.
 * A general information about your daily calorie intake and exercise duration is shown on the top of the page.
 * All your history records will be simply shown in list.
 
-<img src=".\assets\images\history_page.png" style="zoom:20%;" />
+<img src=".\assets\images\history_page.png" width="275px" />
 
-##### User Page
+### User Page:
 
 * This page saves your personal information about height, weight and age, as well as getting your user id and photo from your google account.
 * You can manually modify your user information and it will be saved on firebase.
 * You can logout here and the app jumps to login page.
 
-<img src=".\assets\images\user_page.png" style="zoom:20%;" />
+<img src=".\assets\images\user_page.png" width="275px" />
 
 ## Getting Started
 
