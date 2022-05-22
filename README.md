@@ -36,7 +36,7 @@ This app is convenient for those fitness beginner who who don’t want to go to 
 * A timer gradually increases to record the time you spent on training.
 * When you click back, the training data will be record and save in your history page and store in [firebase cloud store](https://pub.dev/packages/cloud_firestore).
 
-<img src=".\assets\images\tutorial_page.png" style="zoom:20%;" />
+<img src=".\assets\images\tutorial_page.png" style="zoom:5%;" />
 
 ##### Calorie Page
 
