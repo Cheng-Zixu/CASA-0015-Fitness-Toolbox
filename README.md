@@ -10,6 +10,10 @@ This app is convenient for those fitness beginner who who don’t want to go to 
 
 ![screenshot2.jpg](./assets/images/screenshot2.jpg)
 
+## My Storyboard
+
+<img src=".\assets\images\storyboard.jpg" width="800px" />
+
 ## Features
 
 ### Splash page & Login page:
@@ -118,6 +122,15 @@ keytool -exportcert -list -v \
   - https://pub.dev/packages/google_sign_in_platform_interface
 - Firestore Plugin
   - https://pub.dartlang.org/packages/cloud_firestore
+
+### 4. Install on your phone
+
+Remember to run on Andriod Studio (or other IDE) first to avoid any errors. Google play Store is needed on your Andriod phone.
+
+```
+$ flutter clean
+$ flutter install
+```
 
 ## How to Contribute
 
